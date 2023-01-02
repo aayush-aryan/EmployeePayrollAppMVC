@@ -88,5 +88,19 @@ namespace EmployeePayrollAppMVC.Controllers
             return View(emp);
         }
 
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            if (id == null) {
+                return NotFound();
+            }
+            EmployeeModel employee = employeeBL.GetEmployeeData(id);
+
+            if (employee == null) {
+                return NotFound();
+            }
+            return View(employee);
+        }
+
     }
 }
